@@ -15,5 +15,12 @@ public void draw()
 } 
 public void drawBranches(int x,int y, double branchLength, double angle) 
 {   
-	//your code here    
-} 
+	if (branchLength <= smallestBranch)
+		line(x, y, branchLength*cos(angle), branchLength*sin(angle));
+	else if (branchLength == 50){
+		line(x, y, x, y + branchLength);
+		drawBranches(x, y + branchLength, branchLength*cos(angle), branchLength*sin(angle));
+		drawBranches(x, y + branchLength, branchLength*cos(-1*angle), branchLength*sin(-1*angle));
+	}
+	else
+}
