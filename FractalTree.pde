@@ -13,14 +13,18 @@ public void draw()
 	line(320,480,320,380);   
 	//drawBranches(??,??,??,??);  //will add later 
 } 
-public void drawBranches(int x,int y, double branchLength, double angle) 
+public void drawBranches(float x,float y, float branchLength, float angle) 
 {   
 	if (branchLength <= smallestBranch)
-		line(x, y, branchLength*cos(angle), branchLength*sin(angle));
+		line(x, y, branchLength*Math.cos(angle), branchLength*Math.sin(angle));
 	else if (branchLength == 50){
 		line(x, y, x, y + branchLength);
-		drawBranches(x, y + branchLength, branchLength*cos(angle), branchLength*sin(angle));
-		drawBranches(x, y + branchLength, branchLength*cos(-1*angle), branchLength*sin(-1*angle));
+		drawBranches(x, y + branchLength, branchLength*Math.cos(angle), branchLength*Math.sin(angle));
+		drawBranches(x, y + branchLength, branchLength*Math.cos(-1*angle), branchLength*Math.sin(-1*angle));
 	}
 	else
+		line(x, y, branchLength*Math.cos(angle), branchLength*Math.sin(angle));
+		line(x, y, branchLength*Math.cos(-1*angle), branchLength*Math.sin(-1*angle));
+		drawBranches(x, y + branchLength, branchLength*Math.cos(angle), branchLength*Math.sin(angle));
+		drawBranches(x, y + branchLength, branchLength*Math.cos(-1*angle), branchLength*Math.sin(-1*angle));
 }
